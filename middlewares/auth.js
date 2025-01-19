@@ -7,8 +7,6 @@ auth = async (req, res, next) => {
 
     // get the tokens from request
     const { accessToken, refreshToken } = req.cookies
-    console.log(accessToken)
-    console.log(refreshToken)
     // check for exist or not
     if (!accessToken || !refreshToken) {
         error = {
@@ -27,7 +25,6 @@ auth = async (req, res, next) => {
         const user_id = payload._id
         const user = await Users.findOne({ _id:user_id})
         const currentUserDTO = new UserDTO(user)
-        console.log(user)
         req.user = currentUserDTO
         next()
 

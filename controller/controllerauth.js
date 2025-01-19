@@ -164,7 +164,7 @@ const authcontroller = {
                 { token: refreshToken },
                 { upsert: true } // option to tell database that if value not found then save or update
             )
-            console.log(`refresh token [${refreshToken} is updated.]`)
+            console.log('refresh token is updated.')
 
         }
         catch (error) {
@@ -198,7 +198,7 @@ const authcontroller = {
     logout: async (req, res, next) => {
         // delet refresh token
         const { refreshToken } = req.cookies
-        console.log(`token is ${refreshToken} to delete`)
+        console.log('token is to delete')
 
         try {
             await RefreshToken.deleteOne({ token: refreshToken })
@@ -224,7 +224,7 @@ const authcontroller = {
 
             cookieRefreshToken = req.cookies.refreshToken
             _id = JWTService.verifyRefreshToken(token = cookieRefreshToken)._id
-            console.log(`refreshs on server called`)
+            console.log('refresh on server called')
         } catch (error) {
             error = {
                 status: 401,
@@ -242,7 +242,7 @@ const authcontroller = {
                     status: 401,
                     message: 'unauthorized'
                 }
-                console.log(`refresh token not matched`)
+                console.log('refresh token not matched')
                 return next(error)
             }
             console.log(`refresh token matched`)
@@ -262,7 +262,7 @@ const authcontroller = {
                 { token: refreshToken },
                 { upsert: true } // option to tell database that if value not found then save or update
             )
-            console.log(`refresh token [${refreshToken}] updated`)
+            console.log('refresh token updated')
         } catch (error) {
             console.log(`401 error while updatin refresh token`)
             return next(error)
