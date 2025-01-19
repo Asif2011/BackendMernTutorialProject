@@ -18,6 +18,8 @@ api_secret=process.env.api_secret
 
 CLOUDINARY_URL=process.env.CLOUDINARY_URL
 
+front_end_origion_url=process.env.front_end_origion_url
+
 
 module.exports = {PORT,mongo_db_string,
         ACCESS_TOKEN_SECRET,
@@ -26,6 +28,7 @@ module.exports = {PORT,mongo_db_string,
         cloud_name,
         api_key,
         api_secret,
-        CLOUDINARY_URL
+        CLOUDINARY_URL,
+        front_end_origion_url
     }
 
