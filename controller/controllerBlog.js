@@ -63,15 +63,10 @@ const blogController = {
         const uploadResult = await cloudinary.uploader.upload(
                 photo
             )
-            // .then(
-            //     (result) => {console.log(`----> the result is ${result}<---`);}
-            // )
             .catch((error) => {
                 console.log(error);
             });
 
-        console.log(`....> the uploadresult is ${uploadResult}<...`);
-        console.dir(uploadResult);
 
 
 
@@ -123,7 +118,6 @@ const blogController = {
 
     async getAll(req, res, next) {
         try {
-            console.log('blog try block called')
             const allBlogs = await Blog.find({})
             const blogsDto = []
             for (const blog of allBlogs) {
