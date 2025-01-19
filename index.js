@@ -15,10 +15,25 @@ const app = express();
 //     origin: '*', // Allow all origins for deployment
 // };
 
+// const corsOptions = {
+//     credentials: true,
+//     origin: front_end_origion_url,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE']
+// };
+
 const corsOptions = {
     credentials: true,
-    origin: front_end_origion_url,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    origin: (origin, callback) => {
+        if (origin === undefined || front_end_origion_url.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    maxAge: 3600
 };
 
 app.use(cors(corsOptions));
