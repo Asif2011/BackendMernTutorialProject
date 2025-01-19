@@ -187,7 +187,7 @@ const authcontroller = {
             {
                 maxAge: 1000 * 60 * 60 * 24 * 7, //milliseconds for 7 days
                 httpOnly: true,
-                sameSite: 'None',
+                sameSite:'None',
                 secure: true
             }
         )
